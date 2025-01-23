@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_widgets/controllers/font_styles.dart';
 
 import 'onboarding_screen.dart';
+import 'signup_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       (value) {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return  OnboardingScreen();
+            return  SignupScreen();
           },
         ));
       },

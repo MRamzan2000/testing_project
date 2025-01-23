@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, screenType) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: const SplashScreen(),
+          theme: ThemeData(scaffoldBackgroundColor: const Color(0xffFFFFFF)),
         );
       },
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:test_widgets/views/custom_widgets.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -39,10 +40,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   color: index == 0
                       ? Colors.green
                       : index == 1
-                      ? Colors.red
-                      : index == 2
-                      ? Colors.blueAccent
-                      : Colors.black,
+                          ? Colors.red
+                          : index == 2
+                              ? Colors.blueAccent
+                              : Colors.black,
                 );
               },
             ),
@@ -56,21 +57,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 customElevatedButton(
                     onPressed: () {
+                      if (selectedIndex >= 3) {
+                        selectedIndex = 0;
+                        controller.animateToPage(
+                          selectedIndex,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.bounceInOut,
+                        );
+                        setState(() {
+                          print(" if condition run selected index :$selectedIndex");
 
-                      if (selectedIndex < 4) {
+                        });
+                      } else {
                         controller.animateToPage(
                           selectedIndex + 1,
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
                         );
                         setState(() {
+                          print("if else condition run selected index :${selectedIndex}");
                         });
-                      }else{
-                        controller.animateToPage(
-                          0,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );                      }
+                      }
                     },
                     title: "Next",
                     horizentalPadding: 6.h,
